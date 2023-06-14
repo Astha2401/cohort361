@@ -1,0 +1,69 @@
+01-06-2023
+
+# 31. Next Permutation
+class Solution:
+    def nextPermutation(nums):
+      # Find the first index i where nums[i] is less than or equal to nums[i + 1].
+      i = len(nums) - 2
+      while i >= 0 and nums[i] >= nums[i + 1]:
+        i -= 1
+
+      # If no such index exists, then the array is already in the last permutation.
+      if i < 0:
+        return nums
+
+      # Find the largest index j such that nums[j] is greater than nums[i].
+      j = len(nums) - 1
+      while nums[j] <= nums[i]:
+        j -= 1
+
+      # Swap the numbers at indexes i and j.
+      nums[i], nums[j] = nums[j], nums[i]
+
+      # Reverse the order of the numbers starting at index i + 1.
+      nums[i + 1:] = reversed(nums[i + 1:])
+
+      # Return the array.
+      return nums
+
+# 287. Find the Duplicate Number
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        # sort the array in place
+        nums.sort()
+        for i in range(1,len(nums)):
+            if nums[i] == nums[i-1]:
+                return nums[i]
+                break
+
+# 1768. Merge Strings Alternately
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        ans = ""
+        i = 0
+        while i < len(word1) or i < len(word2):
+            if i < len(word1):
+                ans += word1[i]
+            if i < len(word2):
+                ans += word2[i]
+            i += 1
+        return ans
+        
+
+# 977. Squares of a Sorted Array
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        sq = [i**2 for i in nums]
+        sq.sort()
+        return sq 
+
+# 67. Add Binary
+
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        a = int(a, 2)
+        b = int(b, 2)
+        x = a+b
+        x = bin(a+b)
+        
+        return x[2:]

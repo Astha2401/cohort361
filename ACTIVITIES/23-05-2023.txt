@@ -1,0 +1,279 @@
+23-05-2023
+
+1. Write an SQL query to find the number of times each student attended each exams. Order the result table by student_id and subject_name.
+
+Students table:
++------------+--------------+
+| student_id | student_name |
++------------+--------------+
+| 1          | Alice        |
+| 2          | Bob          |
+| 13         | John         |
+| 6          | Alex         |
++------------+--------------+
+
+Subjects table:
++--------------+
+| subject_name |
++--------------+
+| Math         |
+| Physics      |
+| Programming  |
++--------------+
+
+Examinations table:
++------------+--------------+
+| student_id | subject_name |
++------------+--------------+
+| 1          | Math         |
+| 1          | Physics      |
+| 1          | Programming  |
+| 2          | Programming  |
+| 1          | Physics      |
+| 1          | Math         |
+| 13         | Math         |
+| 13         | Programming  |
+| 13         | Physics      |
+| 2          | Math         |
+| 1          | Math         |
++------------+--------------+
+
+Result table:
++------------+--------------+--------------+----------------+
+| student_id | student_name | subject_name | attended_exams |
++------------+--------------+--------------+----------------+
+| 1          | Alice        | Math         | 3              |
+| 1          | Alice        | Physics      | 2              |
+| 1          | Alice        | Programming  | 1              |
+| 2          | Bob          | Math         | 1              |
+| 2          | Bob          | Physics      | 0              |
+| 2          | Bob          | Programming  | 1              |
+| 6          | Alex         | Math         | 0              |
+| 6          | Alex         | Physics      | 0              |
+| 6          | Alex         | Programming  | 0              |
+| 13         | John         | Math         | 1              |
+| 13         | John         | Physics      | 1              |
+| 13         | John         | Programming  | 1              |
++------------+--------------+--------------+----------------+
+
+
+create table student2(
+	student_id int primary key,
+    student_name varchar(200)
+);
+
+insert student2 values
+	(1,'Alice'),
+    (2,'Bob'),
+    (13,'John'),
+    (6,'Alex');
+
+create table subjects(
+	subject_name varchar(200)
+    );
+
+insert subjects values
+	('Math'),
+    ('Physics'),
+    ('Programming');
+create table examinations(
+student_id int,
+subject_name varchar(20)
+);
+
+insert into examinations values
+(1,'Math'),
+(1,'Physics'),
+(1,'Programming'),
+(2,'Programming'),
+(1,'Physics'),
+(1,'Math'),
+(13,'Math'),
+(13,'Programming'),
+(13,'Physics'),
+(2,'Math'),
+(1,'Math');
+
+-- Write an SQL query to find the number of times each student attended each exams. Order the result table by student_id and subject_name. 
+
+select t.student_id, t.student_name, t.subject_name, 
+    if(e.attended_exams is null, 0, e.attended_exams) as attended_exams from
+    (select * from student2 cross join subjects) t
+left join  (select *, count(*) as attended_exams from Examinations group by student_id, subject_name) e on t.student_id = e.student_id and t.subject_name = e.subject_name
+order by student_id, subject_name;
+
+—----------------------------------------------------------------------------------------------------------------------------
+2.Write an SQL query to compute moving average of how much customer paid in a 7 days window (current day + 6 days before).
+
+Customer table:
++-------------+--------------+--------------+-------------+
+| customer_id | name         | visited_on   | amount      |
++-------------+--------------+--------------+-------------+
+| 1           | Jhon         | 2019-01-01   | 100         |
+| 2           | Daniel       | 2019-01-02   | 110         |
+| 3           | Jade         | 2019-01-03   | 120         |
+| 4           | Khaled       | 2019-01-04   | 130         |
+| 5           | Winston      | 2019-01-05   | 110         | 
+| 6           | Elvis        | 2019-01-06   | 140         | 
+| 7           | Anna         | 2019-01-07   | 150         |
+| 8           | Maria        | 2019-01-08   | 80          |
+| 9           | Jaze         | 2019-01-09   | 110         | 
+| 1           | Jhon         | 2019-01-10   | 130         | 
+| 3           | Jade         | 2019-01-10   | 150         | 
++-------------+--------------+--------------+-------------+
+
+Result table:
++--------------+--------------+----------------+
+| visited_on   | amount       | average_amount |
++--------------+--------------+----------------+
+| 2019-01-07   | 860          | 122.86         |
+| 2019-01-08   | 840          | 120            |
+| 2019-01-09   | 840          | 120            |
+| 2019-01-10   | 1000         | 142.86         |
++--------------+--------------+----------------+
+create table customer1(
+	customer_id int,
+    name varchar(200),
+    visited_on date,
+    amount int
+    );
+    
+insert into customer1 values
+(1,'Jhon','2019-01-01',100),
+(2,'Daniel','2019-01-02',110),
+(3,'Jade','2019-01-03',120),
+(4,'Khaled','2019-01-04',130),
+(5,'Winston','2019-01-05',110),
+(6,'Elvis','2019-01-06',140),
+(7,'Anna','2019-01-07',150),
+(8,'Maria','2019-01-08',80),
+(9,'Jaze','2019-01-09',110),
+(1,'Jhon','2019-01-10',130),
+(3,'Jade','2019-01-10',150);
+
+– Write an SQL query to compute moving average of how much customer paid in a 7 days window (current day + 6 days before).
+
+select c1.visited_on, sum(c2.amount) as amount, 
+    round(avg(c2.amount), 2) as average_amount
+from (select visited_on, sum(amount) as amount 
+      from customer1 group by visited_on) c1
+join (select visited_on, sum(amount) as amount 
+      from customer1 group by visited_on) c2
+on datediff(c1.visited_on, c2.visited_on) between 0 and 6
+group by c1.visited_on
+having count(c2.amount) = 7;
+
+—----------------------------------------------------------------------------------------------------------------------------
+3.Write a SQL query for a report that provides the pairs (actor_id, director_id) where the actor have cooperated with the director at least 3 times.
+
+ActorDirector table:
++-------------+-------------+-------------+
+| actor_id    | director_id | timestamp   |
++-------------+-------------+-------------+
+| 1           | 1           | 0           |
+| 1           | 1           | 1           |
+| 1           | 1           | 2           |
+| 1           | 2           | 3           |
+| 1           | 2           | 4           |
+| 2           | 1           | 5           |
+| 2           | 1           | 6           |
++-------------+-------------+-------------+
+
+Result table:
++-------------+-------------+
+| actor_id    | director_id |
++-------------+-------------+
+| 1           | 1           |
++-------------+-------------+
+
+create table actor(actor_id int, director_id int, time_stamp int);
+insert into actor values
+(1,1,0),
+(1,1,1),
+(1,1,2),
+(1,2,3),
+(1,2,4),
+(2,1,5),
+(2,1,6);
+
+– Write a SQL query for a report that provides the pairs (actor_id, director_id) where the actor have cooperated with the director at least 3 times.
+
+SELECT actor_id, director_id
+FROM actor
+GROUP BY actor_id, director_id
+HAVING COUNT(*) >= 3
+
+—----------------------------------------------------------------------------------------------------------------------------
+4.Write a SQL query to find employees who earn the top three salaries in each of the department. For the above tables, your SQL query should return the following rows (order of rows does not matter).
+
++----+-------+--------+--------------+
+| Id | Name  | Salary | DepartmentId |
++----+-------+--------+--------------+
+| 1  | Joe   | 85000  | 1            |
+| 2  | Henry | 80000  | 2            |
+| 3  | Sam   | 60000  | 2            |
+| 4  | Max   | 90000  | 1            |
+| 5  | Janet | 69000  | 1            |
+| 6  | Randy | 85000  | 1            |
+| 7  | Will  | 70000  | 1            |
++----+-------+--------+--------------+
++----+----------+
+| Id | Name     |
++----+----------+
+| 1  | IT       |
+| 2  | Sales    |
++----+----------+
+Result:
++------------+----------+--------+
+| Department | Employee | Salary |
++------------+----------+--------+
+| IT         | Max      | 90000  |
+| IT         | Randy    | 85000  |
+| IT         | Joe      | 85000  |
+| IT         | Will     | 70000  |
+| Sales      | Henry    | 80000  |
+| Sales      | Sam      | 60000  |
++------------+----------+--------+
+
+-creating employee1 table
+
+create table employee1
+(id int, name varchar(20), 
+salary double, dept_id int);
+
+-data of employee1
+insert into employee1 values
+(1,'joe',85000,1),
+(2,'Henry',80000,2),
+(3,'sam',60000,2),
+(4,'Max',90000,1),
+(5,'janet',69000,1),
+(6, 'Randy',85000,1),
+(7,'Will',70000,1);
+
+-creating departments table
+
+create table departments
+(id int, name varchar(30));
+-data of employee2
+
+insert into departments values
+(1,'IT'),
+(2,'sales');
+
+-data of employee2
+insert into departments values
+(1,'IT'),
+(2,'sales');
+
+SELECT d.name AS Department, e.name AS Employe, e.salary AS Salary
+FROM employee1 e
+JOIN department d ON e.dept_id = d.id
+WHERE (
+SELECT COUNT(DISTINCT(e2.salary))
+FROM employee1 e2
+WHERE e2.salary > e.salary AND e.dept_id = e2.dept_id
+) < 3
+ORDER BY d.name, e.salary DESC;
+
+—----------------------------------------------------------------------------------------------------------------------------

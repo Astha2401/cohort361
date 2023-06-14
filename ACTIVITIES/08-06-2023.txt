@@ -1,0 +1,119 @@
+08-06-2023
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def count_distinct_stamps(n, stamps):
+    distinct_stamps = set(stamps)
+    return len(distinct_stamps)
+
+
+# Read input
+n = int(input())
+stamps = []
+for _ in range(n):
+    stamp = input()
+    stamps.append(stamp)
+
+# Count distinct stamps
+result = count_distinct_stamps(n, stamps)
+
+# Print the result
+print(result)
+
+# Read input
+n = int(input())
+scores = list(map(int, input().split()))
+-----------------------------------------------------------------------------------------------------------------------------------
+
+# Convert the scores to a set to remove duplicates, then back to a list
+unique_scores = list(set(scores))
+
+# Sort the list in descending order
+unique_scores.sort(reverse=True)
+
+# Print the second element (runner-up score)
+print(unique_scores[1])
+
+------------------------------------------------------------------------------------------------------------------------------------
+#sWAP cASE
+https://www.hackerrank.com/challenges/swap-case/problem?isFullScreen=true
+def swap_case(s):
+    return s.swapcase()
+
+if __name__ == '__main__':
+    s = input()
+    result = swap_case(s)
+    print(result)
+------------------------------------------------------------------------------------------------------------------------------------
+#merge_tools
+def merge_the_tools(string, k):
+    for i in range(0, len(string), k):
+        uniq = ''
+        for c in string[i : i+k]:
+            if (c not in uniq):
+                uniq+=c
+        print(uniq)
+
+if __name__ == '__main__':
+    string, k = input(), int(input())
+    merge_the_tools(string, k)
+------------------------------------------------------------------------------------------------------------------------------------
+#Word Order
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import OrderedDict
+
+def wordOrder(words):
+    word_freq = OrderedDict()
+    for word in words:
+        if word in word_freq:
+            word_freq[word] += 1
+        else:
+            word_freq[word] = 1
+
+    unique_words = len(word_freq)
+    word_counts = list(word_freq.values())
+
+    # Output the number of unique words
+    print(unique_words)
+
+    # Output the counts of each word in the order of their first occurrence
+    print(*word_counts)
+
+# Example usage
+n = int(input())
+words = []
+for _ in range(n):
+    words.append(input())
+
+wordOrder(words)
+------------------------------------------------------------------------------------------------------------------------------------
+#minion game
+def minion_game(string):
+    # your code goes here
+    vowels="AEIOU"
+    length = len(string)
+    kevin_score = 0
+    stuart_score = 0
+    
+    for i in range(length):
+            # Check if the current character is a vowel or a consonant
+        if string[i] in vowels:
+            kevin_score += length - i
+        else:
+            stuart_score += length - i
+    
+        # Determine the winner or if it's a draw
+    if kevin_score > stuart_score:
+        print("Kevin", kevin_score)
+    elif stuart_score > kevin_score:
+        print("Stuart", stuart_score)
+    else:
+        print("Draw")
+    
+   
+if __name__ == '__main__':
+------------------------------------------------------------------------------------------------------------------------------------
+#find angle mbc
+import math
+c=int(input())
+a=int(input())
+b=math.sqrt(a*a + c*c)

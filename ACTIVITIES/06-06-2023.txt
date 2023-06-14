@@ -1,0 +1,48 @@
+06-06-2023
+#example that combines regular expressions and classes to analyze and process log entries              import re
+from dataclasses import dataclass
+@dataclass
+class LogEntry:
+    timestamp: str
+    level: str
+    message: str
+class LogAnalyzer:
+    def __init__(self, log_entry):
+        self.log_entry = log_entry
+    def analyze_log_entry(self):
+        if self._check_format():
+            entry = self._extract_parts()
+            print(f"Timestamp: {entry.timestamp}")
+            print(f"Level: {entry.level}")
+            print(f"Message: {entry.message}")
+        else:
+            print("Invalid log entry format.")
+    def _check_format(self):
+        pattern = r'^\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\] \[(\w+)\] (.+)$'
+        if re.match(pattern, self.log_entry):
+            return True
+        else:
+            return False
+    def _extract_parts(self):
+        pattern = r'^\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\] \[(\w+)\] (.+)$'
+        match = re.match(pattern, self.log_entry)
+        if match:
+            timestamp = match.group(1)
+            level = match.group(2)
+            message = match.group(3)
+            return LogEntry(timestamp=timestamp, level=level, message=message)
+        else:
+            return None
+# Test the LogAnalyzer class
+log_entry1 = LogAnalyzer("[2023-06-01 10:30:45] [INFO] User login successful.")
+log_entry1.analyze_log_entry()
+# Output:
+# Timestamp: 2023-06-01 10:30:45
+# Level: INFO
+# Message: User login successful.
+log_entry2 = LogAnalyzer("[2023-06-02 13:45:21] [ERROR] Invalid input detected.")
+log_entry2.analyze_log_entry()
+# Output:
+# Timestamp: 2023-06-02 13:45:21
+# Level: ERROR
+# Message: Invalid input detected.

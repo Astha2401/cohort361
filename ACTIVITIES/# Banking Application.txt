@@ -1,0 +1,96 @@
+# Banking Application
+"""
+- Add User (fill details)
+- Generating Login Id and Password
+- Accessing the account
+- Facilities (balance, with, depo)
+- Get User details
+- Exit from the system
+"""
+# Creating a Class for Banking Operations
+from numpy import random
+class User:
+  def __init__(self, first_name, last_name, contact, dob, address, balance = 0):
+    self.first_name = first_name
+    self.last_name = last_name
+    self.contact = contact
+    self.dob = dob #ddmmyyyy
+    self.address = address
+    self.acc_no = int(str(contact)[:4] + dob[1] + dob[3] + dob[6:])
+    self.login_id = random.randint(100000,1000000)
+    self.password = first_name[:3].upper() + last_name[:3].lower() + str(contact)[7:]
+    self.balance = balance
+  
+class AccountManagement:
+  def __init__(self):
+    self.data_base = []
+    
+  def add_user(self):
+    print("--ADD USER--")
+    fn = input("Enter First Name: ")
+    ln = input("Enter Last Name: ")
+    contact = int(input("Enter Contact Number: "))
+    dob = input("Enter DOB in DDMMYYY format: ")
+    a = input("Enter you Address: ")
+    oa = input("Enter the amount to add to New Account: ")
+    new_user = User(fn,ln,contact,dob,a, oa)
+    self.data_base.append(new_user)
+    print("\nUser Successfully Created")
+    print("Your Login ID: ", self.data_base[-1].login_id)
+    print("Your Password: ", self.data_base[-1].password)
+  
+  def print_user_details(self, ind):
+    print('--USER DETAILS--')
+    print("ACCOUNT NUMBER: ",self.data_base[ind].acc_no)
+    print("USER NAME: ", self.data_base[ind].first_name+' '+self.data_base[ind].last_name)
+    print("CONTACT: ", self.data_base[ind].contact)
+    print("DOB: ",self.data_base[ind].dob)
+    print("ADDRESS: ",self.data_base[ind].address)
+    print("LOGIN ID: ",self.data_base[ind].login_id)
+    print("PASSWORD: ",self.data_base[ind].password)
+
+
+
+  def search_user(self):
+    print("--SEARCH USER--")
+    print("Enter the Account number of user being searched: ")
+    ac_no = int(input())
+    for users in self.data_base:
+      if ac_no == users.acc_no:
+        ind = self.data_base.index(users)
+        print("USER FOUND")
+        self.print_user_details(ind) 
+
+
+
+
+u1 = AccountManagement()
+u1.add_user()
+--ADD USER--
+Enter First Name: Ayush
+Enter Last Name: Sharma
+Enter Contact Number: 123456789
+Enter DOB in DDMMYYY format: 25121920
+Enter you Address: New York
+Enter the amount to add to New Account: 5000
+
+User Successfully Created
+Your Login ID:  810101
+Your Password:  AYUSha89
+[ ]
+
+
+u1.search_user()
+
+--SEARCH USER--
+Enter the Account number of user being searched: 
+12345220
+USER FOUND
+--USER DETAILS--
+ACCOUNT NUMBER:  12345220
+USER NAME:  Ayush Sharma
+CONTACT:  123456789
+DOB:  25121920
+ADDRESS:  New York
+LOGIN ID:  810101
+PASSWORD:  AYUSha89
