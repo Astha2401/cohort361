@@ -1,0 +1,83 @@
+05/06/2023
+
+
+  (introduction)
+
+good morning everyone!
+firstly i would like to thank you for giving me this oppurtunity to introduce myself to you
+my name is astha 
+i Am a  computer science professional with a passion for Pyt                          hon ,&  I am committed to utilize  my technical skills to streamline operations and solve real-world problems
+
+i am currently pursuing my eight semester in computer science and enginnnering with an overall gpa of 9.1  from ACS College of engineering , karnataka , bangalore
+
+i have completed my 10th and 12th from kendriya vidyala crpf , bangalore.
+
+under my curriculum i have build a project under artificial intelligence domain that predicts the icu admission for covid -19 patients.Using Classification and regresssion tree algorithm  i have tried to develop supportive tools for clinicians in various tasks to mitigate the unprecedented spread of COVID-19
+i have also Developed a user-friendly interface for patients to enter their medical symptoms and history to reduce the visit to clinics and hospitals so that patients are not prone to other infections l, medical consultation application using android studio.
+i have Worked as a full-stack developer and attained hands-on experience with Artificial Intelligence and Machine Learning in compsoft technologies
+i have also had the oppurtuninty with capgemini to learn abiout power bi tools under my 3 minth internship as a data analyst enthusiast
+ i have knowledge of programming languages llike c, java and python and technologies like android studio , eclipse , pycharm & jupyter notebook.
+I had the distinct honour of being chosen as a distinguished representative of RR Institution, to participate in a prestigious familiarization program hosted by the esteemed Universiti of Petronas in the stunning nation of Malaysia.
+i am also Certified in ‘Application Development with Android Studio’ by Internshala (2022) and ‘Introduction to Python’ by LinkedIn (2023) and ‘Introduction to Java’ by Udemy (2022).
+i have been recognized for my good communicstion skills and time management.
+
+I enjoy writing short stories , travelling and phtography.
+That`s a quick run down of my profile .
+ -----------------------------------------------------------------------------------------------------------------------------------
+
+07/06/2023
+
+
+Strengths:
+
+i am proficient with python since i have used it to develop my final year project and i am also proficient with microsoft azure since i have experience with wokring on cloud.
+i have understanding of data analysis, data visualization, statistical concepts, and machine learning algorithms and i am upskilling it through online           courses from udemy.
+During my project review i was told that i have good communication skills since i could talk about my project and was able to explain my project perfectly.
+my other strenthgs include:-
+Adaptation to New Technologies
+Flexibility and Willingness to Take on Challenges
+Enthusiasm and Eagerness to Learn
+
+weakness:
+
+i might have  Limited Practical Experience.
+and also possess Lack of Specialization-- I might not have deep expertise in any specific area, which can make it challenging to compete in specialized roles .
+i am learning to multitask as well.
+
+Those are my strengths and weakness.
+Thank you!!
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+13/06/2023
+
+
+Situation
+Task 
+Actions
+Result
+
+At the beginning of the project, I noticed that there was a need for a more convenient and accessible way for patients to consult with doctors remotely. I recognized the increasing popularity of mobile applications and decided to leverage Android Studio to develop a medical consultation app.
+
+ The application designed and developed had to be user-friendly and secure and needed to provide a seamless and efficient experience for both patients and doctors, while ensuring the confidentiality and privacy of medical information.
+
+To accomplish this task, I followed a series of steps:
+
+Firstly.I conducted research to understand the specific needs of patients and doctors for a medical consultation application. This involved gathering information on appointment scheduling, video conferencing, electronic medical records, and secure messaging.
+
+then ,Based on the gathered requirements, I created wireframes and prototypes using Android Studio. 
+
+Utilizing my programming skills and the development environment, I began coding the application. I implemented features such as user registration, appointment scheduling, video calling integration,  and access to electronic medical records.
+
+Throughout the development process, I conducted rigorous testing to identify and fix any bugs or issues. This involved both functional testing and security testing to protect against data breaches.
+
+ Once the application passed all the necessary tests, I prepared it for deployment. and a prototype was used by the doctors and registered patients of rrmch.
+
+ 
+
+The application  had a significant impact on improving access to healthcare services. it provided patients with a convenient and flexible way to consult with doctors remotely, reducing the need for in-person visits. It also helped doctors manage their schedules efficiently and access patient information seamlessly.
+
+The application received positive feedback from users, with a significant increase in the number of consultations conducted through the platform. 
+Patients appreciated the ease of use and the ability to receive medical advice without leaving their homes. Doctors found the application to be a valuable tool for managing their patient load effectively.
+
+Overall, the project successfully achieved its goals of  enhancing healthcare accessibility, and delivering a secure and user-friendly experience for both patients and doctors.
