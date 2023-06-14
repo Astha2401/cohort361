@@ -1,0 +1,86 @@
+Ctrl + O -->save
+Hit Enter
+Ctrl + X --> to return to terminal
+To run--> ./filename.sh
+
+echo "Enter you age"
+read ageif [[  "$age" -ge 18 ]];
+then
+
+echo "You are In"elif [[ "$age" -le 18 ]];
+then echo "You are still small"
+else echo "You are out"fi
+sudo apt-get install virtualbox-guest-utils
+if the above does not work
+sudo su
+cd /media
+mkdir cdrom
+mount /dev/cdrom /media/cdrom
+cd cdrom
+sh VBoxLinuxAdditions.run
+
+![Screenshot 2023-06-13 101425.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c2dad722-d075-4652-a420-1f62ce85d498/Screenshot_2023-06-13_101425.png)
+
+If sudo su not working:
+
+gsingh@UbuntuVM:/tmp$ su root
+Password:  (enter password)
+root@UbuntuVM:/tmp# nano /etc/sudoers
+inside the file:
+The editor would open the file, now scroll down to the bottom where you will see a line
+#User privilege specification
+root     ALL=(ALL:ALL) ALL
+your_username ALL=(ALL:ALL) ALL ← Add this line
+Jinesh  to  Everyone 10:29
+yum repositry
+sudo apt install net-tools
+install putty link :- https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+
+![Screenshot 2023-06-13 103638.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1890eab5-0e7a-48d5-a4f7-51fd0bed698d/Screenshot_2023-06-13_103638.png)
+
+![Screenshot 2023-06-13 105430.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/681a76d2-9097-41ef-89ee-183f29506f88/Screenshot_2023-06-13_105430.png)
+
+- n :- avoid new line until inner while loop completes
+a=0
+
+while [ "$a" -lt 10 ]
+do
+b="$a"
+echo "$a"
+while [ "$b" -ge 0 ]
+do
+echo "for $a"
+echo "$b"
+b=$((b - 1))
+done
+echo "done"
+a=$((a + 1))
+done
+b=$((b - 1))
+
+#!/bin/bash
+armstrong=0
+copy1=$1
+copy2=$1
+digits=0
+#find the length of the number
+while (( $copy1!=0 ))
+do
+copy1=$(( $copy1 / 10 ))
+digits=$(( $digits + 1 ))
+done
+#find armstrong sum
+while (( $copy2!=0 ))
+do
+lastdigit=$(( $copy2 % 10 ))
+armstrong=$(( $armstrong + ($lastdigit**$digits) ))
+copy2=$(( $copy2 / 10 ))
+done
+#check if armstrong
+if (( $armstrong==$1 ))
+then
+echo "Armstrong"
+else
+echo "Not Armstrong"
+fi
+

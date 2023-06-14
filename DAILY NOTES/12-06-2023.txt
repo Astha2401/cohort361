@@ -1,0 +1,108 @@
+
+
+Why do we use Linux?
+
+1. Good Programming Environment
+2. Simple UI
+3. Simple Utilities
+4. Hierarchial File System
+5. Multiuser/MultiprocessSsytem
+6. Architectural Independent / Transport
+
+googled ➖
+
+Linux has several advantages that make it a popular operating system choice for both personal and enterprise use. Here are some key advantages of Linux:
+
+1. Open Source: Linux is an open-source operating system, which means that its source code is freely available to the public. This allows developers to study, modify, and distribute the code, fostering a collaborative and transparent development environment. It also encourages innovation and customization.
+2. Customizability: Linux offers a high level of customization. Users can choose from a wide range of desktop environments, such as GNOME, KDE, or XFCE, to tailor the look and feel of their system. Additionally, various distributions (distros) provide different package managers, software choices, and configurations, allowing users to select the one that best suits their needs.
+3. Stability and Reliability: Linux is known for its stability and reliability. It is designed to handle multiple tasks and users simultaneously without experiencing significant performance degradation. Linux-based servers are widely used in critical systems, such as web servers and data centers, where uptime and reliability are crucial.
+4. Security: Linux is inherently more secure compared to other operating systems. Its open-source nature allows a large community of developers to review the code for vulnerabilities and fix them promptly. Additionally, Linux provides robust built-in security features like user privileges, file permissions, and a strong firewall system. These features contribute to a more secure computing environment.
+5. Performance: Linux is known for its efficient resource management, which leads to excellent performance, even on older or less powerful hardware. It has a smaller memory footprint and lower system requirements compared to other operating systems, making it suitable for a wide range of devices, including embedded systems and low-end computers.
+6. Software and Package Management: Linux offers a vast array of free and open-source software. It has a robust package management system, such as apt (used in Debian-based distributions) or yum/dnf (used in Red Hat-based distributions), which simplifies software installation, updates, and dependency management. These package managers provide a centralized repository of software, ensuring easy access to a wide range of applications.
+7. Community and Support: The Linux community is vast and active. It consists of experienced users, enthusiasts, and developers who are willing to help and share knowledge. Online forums, discussion boards, and dedicated support channels provide extensive support and troubleshooting assistance for Linux users.
+8. Scalability: Linux scales well from small embedded devices to large enterprise systems. It can be customized and optimized for specific use cases, allowing businesses to scale their infrastructure according to their needs without licensing restrictions or increased costs.
+9. Compatibility and Interoperability: Linux supports a wide range of hardware architectures, including x86, ARM, and PowerPC. It also provides compatibility with various file systems and supports interoperability with other operating systems, allowing users to work with different platforms seamlessly.
+
+Overall, Linux's open-source nature, customizability, stability, security, performance, extensive software ecosystem, and strong community support make it a compelling choice for individuals, businesses, and organizations seeking a powerful and flexible operating system.
+
+what is kernel ?
+
+kernel is core of unix system 
+
+loaded at system start
+
+manages entire resource of system : device arrangement , process scheduling !!
+
+download & installations
+
+https://www.virtualbox.org/wiki/Downloadshttps://download.virtualbox.org/virtualbox/7.0.8/Oracle_VM_VirtualBox_Extension_Pack-7.0.8.vbox-extpackhttps://ubuntu.com/download/desktop
+
+(discussing 2nd code solution of weekly test)
+
+import re
+def validate_email(email):
+pattern = r'^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$'
+return re.match(pattern, email)
+def process_marks(records):
+students = []
+for record in records:
+name, email, *marks = record.split(',')
+if len(marks) != 3 or not all(mark.isdigit() and int(mark) >= 35 for mark in marks):
+continue
+if not validate_email(email):
+continue
+marks = list(map(int, marks))
+total_marks = sum(marks)
+students.append((name, email, marks, total_marks))
+students.sort(key=lambda x: x[3], reverse=True)
+rank = 1
+prev_total_marks = None
+for i, student in enumerate(students):
+if student[3] != prev_total_marks:
+rank = i + 1
+prev_total_marks = student[3]
+students[i] = student + (rank,)
+return students
+# Test the program with the given sample input
+sample_input = [
+"11",
+"[Name-0,name0@gmail.com](mailto:Name-0,name0@gmail.com),80,92,80",
+"[Name-1,name1@gmail.com](mailto:Name-1,name1@gmail.com),87,94,95",
+"[Name-2,name2@gmail.com](mailto:Name-2,name2@gmail.com),98,95,78",
+"Name-3,name3@gmail..com,92,63,76",
+"[Name-4,name4@gmail.com](mailto:Name-4,name4@gmail.com),90,86,88",
+"[Name-5,name5@gmail.com](mailto:Name-5,name5@gmail.com),98,85,80",
+"[Name-6,name6@gmail.com](mailto:Name-6,name6@gmail.com),83,,84",
+"[Name-7,name7@gmail.com](mailto:Name-7,name7@gmail.com).,80,76,86",
+"Name-8,name [8@gmail.com](mailto:8@gmail.com),92,83,76",
+"[Name-9,name9@gmail.com](mailto:Name-9,name9@gmail.com),90,95,86",
+"[Name-10,name10@gmail.com](mailto:Name-10,name10@gmail.com),82,0,80"
+]
+num_records = int(sample_input[0])
+records = sample_input[1:]
+result = process_marks(records)
+# Print the output
+for i in range(num_records):
+name, email, marks, total_marks, rank = result[i]
+marks_str = ','.join(str(mark) for mark in marks)
+print(f"{name},{email},{marks_str},{total_marks},{rank}")
+
+After installation !!!
+
+ctrl + o is to save
+ctrtl + x is to exit
+
+1. vi [first.sh](http://first.sh/)
+2. Shift key + I to type
+3. write code
+4. esc + ":" wq to save and exit
+5. chmod [first.sh](http://first.sh/)
+6. ./first.sh
+
+
+
+write code for mathematical expressions to add , subtract , divide and multiply :
+
+# !/bin/bashecho "Enter Two numbers : "read aread becho "Enter Choice :"echo "1. Addition"echo "2. Subtraction"echo "3. Multiplication"echo "4. Division"read chcase $ch in1)res=`echo $a + $b | bc`;;2)res=`echo $a - $b | bc`;;3)res=`echo $a \\* $b | bc`;;4)res=`echo "scale=2; $a / $b" | bc`;;esacecho "Result : $res
+
+(bc - arbitrary-precision arithmetic if you don't us that calculation does not happen)

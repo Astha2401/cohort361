@@ -1,0 +1,109 @@
+what is time complexity ??
+
+time complexity is the amount of time required for an algorithm to run a function.
+
+![Screenshot 2023-06-01 091551.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/295df3ba-9c5a-4430-9ecd-488d9e977fc0/Screenshot_2023-06-01_091551.png)
+
+![Screenshot 2023-06-01 091654.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7d413810-bfb2-46a4-830c-fd7df2635298/Screenshot_2023-06-01_091654.png)
+
+![Screenshot 2023-06-01 091817.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f8fba0e4-89e0-4eda-9236-b6710f9ce7e2/Screenshot_2023-06-01_091817.png)
+
+1. given N=1024
+
+j =1 
+
+count = 0
+
+while j≤N
+
+j = j*2
+
+count +=1
+
+print(count)
+
+2.
+
+```
+n = 2048
+outercount = 0
+innercount= 0
+
+while n>1:
+    outercount+=1
+    j=0
+    while j<n:
+        innercount+=1
+        j+=1
+     n=n/2
+print(innercount)     
+print(outercount)
+
+output : 4094
+         11
+```
+
+3.
+
+```python
+def add_elements_with_index():
+    elements = input("Enter the elements (separated by spaces): ").split()
+    elements = [int(num) for num in elements]  # Convert input strings to integers
+
+    result = []
+    for index, element in enumerate(elements):
+        result.append(index + element)
+
+    return result
+
+output = add_elements_with_index()
+print("Result:", output)
+```
+
+optimised code for the above 
+
+```python
+elements = input("Enter the elements (separated by spaces): ")
+elements = [int(num) for num in elements.split()]
+
+result = [index + element for index, element in enumerate(elements)]
+
+print("Result:", result)
+
+output
+Enter the elements (separated by spaces): 2 3 4 5
+Result: [2, 4, 6, 8]
+```
+
+4.
+
+```python
+def add_elements(user_input, start_index, end_index):
+    # Slice the user input list based on the start and end indexes
+    selected_elements = user_input[start_index:end_index + 1]
+    
+    # Calculate the sum of the selected elements
+    result = sum(selected_elements)
+    
+    return result
+
+# Take user input for a list of integers
+user_input = list(map(int, input("Enter a list of integers, separated by spaces: ").split()))
+
+# Prompt for the range of indexes
+start_index = int(input("Enter the start index: "))
+end_index = int(input("Enter the end index: "))
+
+# Call the function to add the elements within the specified range
+output = add_elements(user_input, start_index, end_index)
+
+# Display the result
+print("Sum of elements within the specified range:", output)
+
+output
+Enter a list of integers, separated by spaces: 3 4 5 6 7 8 9  0
+Enter the start index: 1
+Enter the end index: 4
+Sum of elements within the specified range: 22
+```
+
