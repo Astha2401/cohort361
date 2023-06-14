@@ -1,0 +1,51 @@
+26/05/2023
+
+
+use c361cohort;
+select * from employee where emp_name regexp '^[pj]'
+
+
+^ :- anything which start with that character
+select * from employee where emp_name regexp '^[^pj]'
+
+select * from employee where emp_name regexp '[NH]$'
+
+select * from employee where emp_name like '%N%'
+
+select * from employee where emp_name regexp '^.{4}$'
+
+select * from employee where emp_name regexp 'g'
+
+
+SELECT *
+FROM employee
+WHERE CAST(emp_name AS BINARY) = CAST(UPPER(emp_name) AS BINARY);
+
+
+SELECT *
+FROM employee
+WHERE emp_name COLLATE utf8mb4_bin REGEXP '^[A-Z\s]+$';
+select * from employee where CAST(emp_name AS BINARY) REGEXP BINARY '^[A-Z]+$';
+
+
+Avani Chhajed 10:11
+select * from employees1 where CAST(name AS BINARY) REGEXP BINARY '^[A-Z0-9]+$';
+
+
+a=5
+>>> b=6
+>>> print(a+b)
+11
+>>> print(b-a)
+1
+>>> print(a*b)
+30
+>>> print(b/a)
+1.2
+>>> import sys
+>>> sys.executable
+'C:\\Users\\ASTHA\\AppData\\Local\\Programs\\Python\\Python38\\python.exe'
+>>> list = [12,'astha',"ok"]
+>>> type(list)
+<class 'list'>
+>>>
