@@ -1,0 +1,59 @@
+ls: Lists files and directories in the current location.
+Ubuntu: ls -l
+CentOS: ls -lh
+
+mkdir: Creates a new directory.
+Ubuntu: mkdir new_directory
+CentOS: mkdir -p new_directory
+
+rm: Removes files and directories.
+Ubuntu: rm file.txt
+CentOS: rm -rf file.txt
+
+cp: Copies files and directories.
+Ubuntu: cp file.txt destination.txt
+CentOS: cp -r file.txt destination.txt
+
+mv: Moves or renames files and directories.
+Ubuntu: mv file.txt new_location.txt
+CentOS: mv file.txt new_location
+
+apt-get (Ubuntu) / yum (CentOS): Package managers for installing, updating, and removing software packages.
+Ubuntu: sudo apt-get install package_name
+CentOS: sudo yum install package_name
+
+useradd: Adds a new user account.
+Ubuntu: sudo useradd new_user
+CentOS: sudo useradd new_user
+
+usermod: Modifies user account properties.
+Ubuntu: sudo usermod -aG group_name user_name
+CentOS: sudo usermod -aG group_name user_name
+
+groupadd: Creates a new group.
+Ubuntu: sudo groupadd new_group
+CentOS: sudo groupadd new_group
+
+passwd: Changes a user's password.
+Ubuntu: sudo passwd user_name
+CentOS: sudo passwd user_name
+
+su: Switches to another user account.
+Ubuntu: sudo su - user_name
+CentOS: sudo su - user_name
+
+sudo: Executes a command as another user, typically the superuser.
+Ubuntu: sudo command_name
+CentOS: sudo command_name
+
+adduser: Adds a new user account with extended options.
+Ubuntu: sudo adduser new_user
+CentOS: Not available by default (use useradd instead).
+
+deluser: Removes a user account and associated files.
+Ubuntu: sudo deluser user_name
+CentOS: Not available by default.
+
+groupmod: Modifies group account properties.
+Ubuntu: sudo groupmod -n new_group_name old_group_name
+CentOS: sudo groupmod -n new_group_name old_group_name
