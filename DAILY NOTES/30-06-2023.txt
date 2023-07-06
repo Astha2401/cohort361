@@ -1,0 +1,59 @@
+30-06-2023
+
+CI/CD with Jenkins and Github
+
+CI/CD (Continuous Integration/Continuous Delivery) is a software development practice that focuses on automating the build, testing, and deployment processes. Jenkins and GitHub are popular tools used in CI/CD pipelines to achieve automated and efficient software delivery.
+
+To set up CI/CD with Jenkins and GitHub, you can follow these steps:
+
+Install Jenkins: Install Jenkins on a server or a local machine. Jenkins is an open-source automation server that helps orchestrate the CI/CD pipeline.
+
+Configure Jenkins: Set up Jenkins by accessing its web interface and configuring the necessary plugins and global settings. Create a new Jenkins job to define the CI/CD pipeline.
+
+Connect Jenkins with GitHub: Integrate Jenkins with your GitHub repository to trigger builds and deployments whenever changes are pushed to the repository.
+
+Example Jenkins pipeline script (Jenkinsfile):
+
+groovy
+Copy code
+pipeline {
+  agent any
+  stages {
+    stage('Checkout') {
+      steps {
+        git branch: 'main', url: 'https://github.com/your/repository.git'
+      }
+    }
+    stage('Build') {
+      steps {
+        sh 'mvn clean package'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'mvn test'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sh 'mvn deploy'
+      }
+    }
+  }
+}
+Configure Webhooks: In your GitHub repository settings, configure webhooks to notify Jenkins about repository changes. This allows Jenkins to automatically trigger builds upon new commits.
+
+Set up Build Triggers: Configure Jenkins to schedule builds periodically or trigger builds when changes are detected in the GitHub repository.
+
+Build and Deployment Actions: Define the necessary build and deployment actions within the Jenkins pipeline stages. This can include building the project, running tests, generating artifacts, and deploying the application.
+
+Example Deployment Stage:
+
+groovy
+Copy code
+stage('Deploy') {
+  steps {
+    sh 'ansible-playbook -i inventory deploy.yml'
+  }
+}
+By integrating Jenkins and GitHub, you can automate the software development lifecycle, from code changes to building, testing, and deploying applications. This enables faster and more reliable software delivery, improves collaboration among team members, and ensures consistent quality throughout the development process.

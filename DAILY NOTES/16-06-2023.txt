@@ -1,0 +1,31 @@
+16-06-2023
+Demonstrating and understanding network masks
+
+Understanding of the differences between private and public  IP-Addresses
+
+Understanding of the major differences between IPv4 and IPV6
+
+Manually and automatically configure network interfaces
+
+Understanding about common TCP and UDP ports
+
+Changing host name and enabling static name resolution 
+
+Enabling dynamic name resolution
+
+
+Demonstrating and understanding network masks involve working with subnet masks in IP networking. A network mask, also known as a subnet mask, is a 32-bit value used to divide an IP address into network and host portions. It determines which part of the IP address represents the network and which part represents the host. A network mask is written in dotted decimal notation, where the binary ones represent the network portion, and the binary zeros represent the host portion. For example, in the IP address 192.168.0.1 with a subnet mask of 255.255.255.0, the first 24 bits represent the network, and the last 8 bits represent the host.
+
+Understanding the differences between private and public IP addresses involves knowing the address ranges designated for each purpose. Private IP addresses are used within private networks and are not routable over the internet. The commonly used private IP address ranges are 10.0.0.0 - 10.255.255.255, 172.16.0.0 - 172.31.255.255, and 192.168.0.0 - 192.168.255.255. On the other hand, public IP addresses are assigned by internet service providers (ISPs) and are globally routable across the internet.
+
+IPv4 and IPv6 are different versions of the Internet Protocol. IPv4 uses a 32-bit address format, allowing for approximately 4.3 billion unique addresses. IPv6, on the other hand, uses a 128-bit address format, providing a significantly larger address space, capable of accommodating an enormous number of devices. IPv6 also offers other advantages, such as built-in security features and improved routing efficiency. However, IPv6 adoption has been slower compared to IPv4 due to compatibility issues and the need for infrastructure upgrades.
+
+Manually and automatically configuring network interfaces involves setting up network connectivity on a system. Manually configuring a network interface requires assigning an IP address, subnet mask, gateway, and DNS servers manually. This can be done using configuration files or through network configuration utilities. On the other hand, automatic configuration can be achieved using protocols like DHCP (Dynamic Host Configuration Protocol), where the system automatically obtains the necessary network settings from a DHCP server.
+
+Common TCP and UDP ports are used to identify specific network services or applications running on a device. TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are transport layer protocols that use port numbers to direct incoming network traffic to the appropriate application. For example, port 80 is commonly used for HTTP (Hypertext Transfer Protocol), port 443 for HTTPS (HTTP Secure), port 22 for SSH (Secure Shell), and port 53 for DNS (Domain Name System).
+
+Changing the hostname and enabling static name resolution involves configuring the system's hostname and DNS settings. The hostname is a label assigned to a device on a network, while name resolution is the process of translating human-readable hostnames to IP addresses. To change the hostname, the system's configuration files need to be updated with the new hostname. Static name resolution involves manually configuring the DNS servers in the system's network configuration files. This allows the system to resolve hostnames to IP addresses without relying on external DNS servers.
+
+Enabling dynamic name resolution involves configuring the system to use dynamic name resolution protocols such as DNS or mDNS (Multicast DNS). With dynamic name resolution, the system can automatically obtain and update the IP-to-hostname mappings from a DNS server or through the local network using mDNS. This allows for easy discovery and communication between devices on the network using their hostnames.
+
+ demonstrating and understanding network masks involve working with subnet masks to divide IP addresses into network and host portions. Private IP addresses are used within private networks, while public IP addresses are routableover the internet. IPv4 and IPv6 are different versions of the Internet Protocol, with IPv6 offering a larger address space and additional features. Network interfaces can be manually or automatically configured, with manual configuration involving setting IP addresses, subnet masks, gateways, and DNS servers. TCP and UDP ports are used to identify network services or applications. Changing the hostname and enabling static name resolution involves configuring the system's hostname and DNS settings, while enabling dynamic name resolution allows for automatic IP-to-hostname mappings through protocols like DNS or mDNS.

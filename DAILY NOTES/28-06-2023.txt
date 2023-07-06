@@ -1,0 +1,93 @@
+28-06-2023
+
+Introduction to Devops/SRE principles - setup of environment
+DevOps (Development and Operations) and SRE (Site Reliability Engineering) are approaches that emphasize collaboration, automation, and continuous improvement in software development and operations. Setting up the environment for DevOps/SRE involves configuring the necessary tools, infrastructure, and processes to support efficient and reliable software development and deployment.
+
+To set up the environment, you can follow these steps:
+
+Version Control: Choose a version control system like Git and create a repository to store your code. Initialize the repository and add an initial commit.
+
+Example commands:
+
+csharp
+Copy code
+git init
+git add .
+git commit -m "Initial commit"
+Infrastructure as Code: Use configuration management tools like Ansible, Puppet, or Chef to define and manage your infrastructure as code. This allows for reproducible and automated provisioning of infrastructure resources.
+
+Example Ansible playbook (playbook.yml):
+
+yaml
+Copy code
+---
+- name: Install web server
+  hosts: webservers
+  tasks:
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+Running the playbook:
+
+Copy code
+ansible-playbook playbook.yml
+Continuous Integration/Continuous Delivery (CI/CD): Set up a CI/CD pipeline to automate the build, test, and deployment processes. Tools like Jenkins, GitLab CI/CD, or CircleCI can be used to configure and manage the pipeline.
+
+Example Jenkinsfile:
+
+groovy
+Copy code
+pipeline {
+  agent any
+  stages {
+    stage('Build') {
+      steps {
+        sh 'mvn clean package'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'mvn test'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sh 'mvn deploy'
+      }
+    }
+  }
+}
+Monitoring and Alerting: Implement a monitoring and alerting system to track the health and performance of your applications and infrastructure. Tools like Prometheus, Grafana, or Datadog can be used to set up monitoring dashboards and alerting rules.
+
+Example Prometheus configuration (prometheus.yml):
+
+yaml
+Copy code
+scrape_configs:
+  - job_name: 'myapp'
+    static_configs:
+      - targets: ['localhost:8080']
+Running Prometheus:
+
+arduino
+Copy code
+prometheus --config.file=prometheus.yml
+Infrastructure Orchestration: Utilize containerization and orchestration tools like Docker and Kubernetes to manage and scale your applications in a containerized environment.
+
+Example Dockerfile:
+
+Dockerfile
+Copy code
+FROM nginx:latest
+COPY . /usr/share/nginx/html
+Building the Docker image:
+
+Copy code
+docker build -t myapp:latest .
+Running the Docker container:
+
+arduino
+Copy code
+docker run -d -p 80:80 myapp:latest
+Setting up the environment for DevOps/SRE involves combining these elements to achieve automation, collaboration, and efficiency in software development and operations. By implementing these principles and tools, you can streamline the development process, improve system reliability, and enhance overall software delivery capabilities.

@@ -1,0 +1,49 @@
+07-07-2023
+
+Web application development in Python using Flask
+
+Web application development in Python using Flask involves using the Flask framework, which is a lightweight and flexible framework for building web applications. Flask allows developers to create web applications quickly and efficiently by providing a set of tools and libraries for handling HTTP requests, routing, and rendering HTML templates.
+
+To illustrate an example of web application development using Flask, let's consider a simple task management application. First, we would start by installing Flask using a package manager like pip. Once Flask is installed, we can create a new Python file, let's call it "app.py," and import the necessary modules:
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+
+Next, we can define routes and associated functions to handle different URLs. For example, we can define a route for the home page ("/") and a route to display a list of tasks ("/tasks"):
+@app.route("/")
+def home():
+    return "Welcome to the Task Management App"
+
+@app.route("/tasks")
+def tasks():
+    task_list = ["Task 1", "Task 2", "Task 3"]
+    return render_template("tasks.html", tasks=task_list)
+
+
+In the above code, the home() function returns a simple welcome message for the home page, and the tasks() function renders an HTML template called "tasks.html" and passes a list of tasks to it.
+
+We can create the "tasks.html" template file in a templates folder and define the HTML structure and dynamic content using Jinja templating:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Management</title>
+</head>
+<body>
+    <h1>Task List</h1>
+    <ul>
+        {% for task in tasks %}
+        <li>{{ task }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+In this template, we use the Jinja templating syntax to loop through the tasks and display them as list items.
+
+Finally, we can add a conditional check at the bottom of the "app.py" file to ensure that the application is run only if the file is executed directly:
+if __name__ == "__main__":
+    app.run(debug=True)
+This allows us to run the Flask development server and access our web application on a local host.
+
+Overall, web application development in Python using Flask involves defining routes, handling requests, and rendering HTML templates. Flask provides a straightforward and flexible framework for building web applications, making it a popular choice among Python developers.

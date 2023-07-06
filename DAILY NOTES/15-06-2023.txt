@@ -1,0 +1,17 @@
+15-06-2023
+
+topics covered :- 
+
+Navigating documents using vi
+
+Using basic vi modes
+
+Insert, Delete, Edit, copy 
+
+Navigating documents using Vi involves using the Vi text editor to open, view, and navigate through text files. Vi is a powerful and widely used command-line text editor found in Unix-based systems. To navigate documents in Vi, users can open a file by typing vi <filename> in the terminal. Once inside Vi, there are different modes available for editing and navigating the document.
+
+Vi has three primary modes: command mode, insert mode, and last-line mode. Command mode is the default mode, where users can navigate the document and execute commands. In command mode, users can move the cursor using the arrow keys or various navigation commands such as h (left), j (down), k (up), and l (right). Insert mode allows users to enter and edit text directly into the document. To enter insert mode, users can press the i key. Last-line mode is used to issue commands that affect the whole document or execute specific actions.
+
+In Vi, there are several commands for editing text. To insert text, users can switch to insert mode and start typing. To delete text, users can position the cursor at the desired location and use commands like x to delete a single character, dd to delete a whole line, or dw to delete a word. The copy command in Vi is known as the yank command, which can be used to copy text. For example, to copy a line, users can position the cursor on the line and type yy. To find text within the document, users can switch to command mode and use the / followed by the search term. For instance, typing /keyword will search for "keyword" in the document.
+
+Overall, navigating documents using Vi involves familiarizing oneself with the different modes, such as command mode, insert mode, and last-line mode. Users can navigate the document using commands or arrow keys, edit text by inserting, deleting, and copying, and find specific text using the search functionality. Mastering Vi's navigation and editing commands can greatly enhance productivity when working with text files

@@ -1,0 +1,239 @@
+# Linux Notes
+
+Linux is an open-source operating system.
+
+It consists of three parts: Kernel, Shell and Programs.
+
+It is Hierarchical file system based
+
+it is a multiprocess system based on unix
+
+VI Editor
+
+Editing files using the screen-oriented text editor **vi** is one of the best ways.
+
+**Command mode** − This mode enables you to perform administrative tasks such as saving the files, executing the commands
+
+**Insert mode** − This mode enables to insert text into the file.
+
+vi always starts in the **command mode**.
+
+vi filename, Shift key + I to type
+
+The command to quit out of vi is **:q**. The command to save the contents of the editor is **:w**. You can combine the above command with the quit command, or use **:wq** and return.
+
+chmod new.sh ./new.sh
+
+then ctrl + o is to save, ctrl + x is to exit
+
+Nano Editor:-
+
+Create: nano filename
+
+To save the changes you’ve made to the file, press `Ctrl+o`. If the file doesn’t already exist, it will be created once you save it.
+
+To exit nano press `Ctrl+x`.
+
+keep user in sudo group → sudo usermod -aG sudo username
+
+Su  is used to  command to change user 
+
+adduser / useradd  for adding user.
+
+$0 refers to the whole input that is passed.
+
+In a shell script, **`$1`** and **`$2`** are special variables called positional parameters. They represent the command-line arguments passed to the script when it is executed.
+
+if [ "$num" \< 0 ] also works for below
+
+```bash
+if [ "$num" -ge 0 ]; then
+echo "The number is greater than or equal to 0."
+else
+echo "The number is less than 0."
+```
+
+-ge means greater than equal to
+
+-gt means greater than
+
+-lt means less than
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c3b8bbcf-48de-473c-a2b7-880307b89a5d/Untitled.png)
+
+Kernel
+
+The Linux kernel is the main component of a [Linux operating system (OS)](https://www.redhat.com/en/topics/linux/what-is-linux) and is the core interface between a computer’s hardware and its processes. It communicates between the 2, managing resources as efficiently as possible.
+
+1. **Memory management:** Keep track of how much memory is used to store what, and where
+2. **Process management:** Determine which processes can use the central processing unit (CPU), when, and for how long
+3. **Device drivers:** Act as mediator/interpreter between the hardware and processes
+4. **System calls and security:** Receive requests for service from the processes
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/85bdaa43-bd4d-4110-912a-501fb81cc6e2/Untitled.png)
+
+GREP ->
+
+The grep filter finds a file for a specific character pattern and shows every line that includes that pattern.
+
+1. $ sudo apt-get install grep
+
+grep -i “hello” text.txt  → -i for uppercase or lowercase
+
+The grep -r command is used to search for a specific pattern recursively in files and directories. The -r option stands for "recursive" and allows grep to search for the pattern in all files and subdirectories within the specified directory
+
+• **grep -vM**: The 'grep -v' command displays lines not matching to the specified word.
+
+• `-w`: Find the exact matching word from the input file or string.
+
+• `-c`: Count the number of occurrences of the provided pattern.
+
+The `ps aux` command is a tool to monitor processes running on your Linux system.
+
+cp $source_file $destination_file ( cp /path/to/source/file.txt /path/to/destination/file.txt)
+
+cp command
+
+This command will copy the file named **`file.txt`** from the **`/path/to/source`** directory to the **`/path/to/destination`** directory.If the destination file already exists, it will be overwritten with the contents of the source file.
+
+**`curl`** is a versatile command-line tool that supports a wide range of protocols, including HTTP, HTTPS, FTP, SFTP, and more. 
+
+SED→
+
+“sed” command in Linux stands for stream editor and it can perform lots of functions on file like searching, find and replace, insertion or deletion.
+
+**`$sed 's/good/great/' hello.txt`**
+
+Here the “s” specifies the substitution operation. The “/” are delimiters. The “good” is the search pattern and the “great” is the replacement string.
+
+The /g specifies sed command to replace all the occurrences of the string in the line.
+
+/1, /2 etc flags to replace the first, second occurrence of a pattern in a line.
+
+****Use the combination of /1, /2 etc and /g to replace all the patterns from the nth occurrence of a pattern in a line.
+
+**`sed 's/unix/linux/3g' file.txt`**
+
+This sed example prints the first character of every word in parenthesis. **`$ echo "Hello World" | sed 's/\(\b[A-Z]\)/\(\1\)/g'`**
+
+The **`a`** command in **`sed`** is used for appending text after a line. Let's append a new line after the second line “sed '2a\This is the appended line.' example.txt”.
+
+Parenthesize first character of each word: **`sed '3 s/hello/world/' file.txt`**
+
+the **`mount`** command is used to attach a filesystem ( hard disk partition or a remote network share) to a specific directory in the file system hierarchy.
+
+```bash
+mount [options] <device> <mount_point>
+```
+
+```bash
+man uname
+man printf
+```
+
+man:  Manual pages provide detailed documentation, explanations, and examples for the specified commands, helping users understand their usage and options.
+
+The **`fsck`** command is used in Linux and Unix-like operating systems to check and repair filesystem inconsistencies.
+
+PGREP→
+
+the **pgrep** command searches for [processes](https://www.computerhope.com/jargon/p/process.htm) currently running on the system, based on a complete or partial process name, or other specified attributes and retrieve their process IDs (PIDs).the **-f** option, **pgrep -f "name"** allows you to search for processes that match a specific pattern in their command line arguments.
+
+```bash
+ pgrep -f "pattern"
+```
+
+Searching for processes- run **`pgrep -f "name"`**
+
+The command **returns the PIDs of the processes** that match the pattern. Each PID is printed on a separate line.
+
+kill pid → To Kill the Proccess.
+
+```bash
+ps aux | grep nginx
+```
+
+"ps aux" command, which lists all running processes,"grep" command to filter the output and display only the lines that contain the keyword "nginx". The result will show you the processes related to "nginx".
+
+```bash
+sudo less /etc/shadow 
+```
+
+The **`less`** command is a pager utility in Linux.It allows you to view the contents of a file in a scrollable manner, making it easier to read and navigate through large files or output that doesn't fit in a single screen.
+
+SSH Commands:-
+
+ifconfig: shows ip and mac addresses
+
+ping [domain_name]
+
+`host [domain_name_or_ip]`
+
+dig [domain_name]
+
+nslookup [domain_name_or_ip]
+
+sudo apt update
+
+1. Install the OpenSSH server package:
+
+```
+
+sudo apt install openssh-server
+
+```
+
+sudo systemctl start ssh
+
+sudo systemctl status ssh
+
+The **`chown`** command is used in Linux to change the ownership of files and directories. It allows you to modify the user and group ownership of one or more files or directories.
+
+ss - The **`ss`** command in Linux is used to display detailed information about network sockets, network connections, and network statistics
+
+```bash
+ss-t # to display tcp packets connectionn
+ss-u # udp
+```
+
+ssh: remote access to hosted machine - its encrypted and secure
+
+```bash
+ssh username@hostname 
+ssh username@hostname -p port_number
+
+```
+
+- The **`ssh-keygen`** command is used to generate SSH key pairs, which consist of a public key and a corresponding private key.
+- Hard links and Soft Links:-
+- Hard links are direct links to the underlying data of a file or directory. They share the same data and cannot link across different file systems.
+- Symbolic (soft) links are special files that act as pointers to another file or directory. They can span across different file systems and have their own permissions and ownership.
+
+The **`ln`** command in Linux is used to create links or symbolic links between files or directories. It is primarily used to create shortcuts or references to other files or directories
+
+```bash
+ln file file-hard-copy
+ln -s file file-soft-copy ( this creates shorcut)
+```
+
+CentOS➖
+
+It is a command-line package management utility used in Red Hat-based Linux distributions such as CentOS.Some of the Commands:-
+
+`yum install package1.rpm -y`
+
+`yum localinstall package1.rpm`
+
+`yum update package1.rpm`
+
+`yum update –y`
+
+`yum grouplist`
+
+`yum version available`
+
+`yum version group`
+
+`yum history`
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5c159218-3ef7-4744-95d8-3ada9607d656/Untitled.png)

@@ -1,0 +1,88 @@
+06-06-2023
+
+topics : Object Oriented Programming in Python
+
+Classes
+
+Inheritence and Polymorphism
+
+What is RegEx in Python
+
+Object-Oriented Programming (OOP) is a programming paradigm that focuses on creating objects that contain both data and behavior. In Python, OOP is fully supported, allowing developers to define their own classes and objects. Classes serve as blueprints or templates for creating objects. They encapsulate attributes (data) and methods (behavior) that define the characteristics and actions of objects. By using classes, developers can achieve code reusability, modularity, and maintainability in their programs.
+
+# Define a class representing a car
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def start_engine(self):
+        print(f"The {self.brand} {self.model} engine is started.")
+
+# Create objects from the Car class
+car1 = Car("Toyota", "Camry")
+car2 = Car("Honda", "Accord")
+
+# Call methods on the objects
+car1.start_engine()  # Output: The Toyota Camry engine is started.
+car2.start_engine()  # Output: The Honda Accord engine is started.
+
+
+
+Inheritance and polymorphism are key concepts in OOP. Inheritance allows the creation of a new class (child class) based on an existing class (parent class). The child class inherits the attributes and methods of the parent class, enabling code reuse and the ability to add or modify functionality. In Python, multiple inheritance is supported, meaning a child class can inherit from multiple parent classes. Polymorphism, on the other hand, allows objects of different classes to be treated as objects of a common superclass. It enables flexibility in using different objects interchangeably, as long as they adhere to a common interface or have common behavior.
+# Define a parent class
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def sound(self):
+        pass
+
+# Define child classes inheriting from the Animal class
+class Dog(Animal):
+    def sound(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def sound(self):
+        return "Meow!"
+
+# Create objects from the child classes
+dog = Dog("Rex")
+cat = Cat("Whiskers")
+
+# Call the sound method on the objects
+print(dog.sound())  # Output: Woof!
+print(cat.sound())  # Output: Meow!
+
+
+Regular expressions (RegEx) in Python are powerful tools for pattern matching and text manipulation. A regular expression is a sequence of characters that define a search pattern. Python's re module provides functions and methods for working with regular expressions. With RegEx, developers can search, find, and manipulate text based on specific patterns, such as matching phone numbers, email addresses, or specific word patterns. Regular expressions support a wide range of operators and metacharacters that allow for precise and flexible pattern matching.
+
+import re
+
+# Search for a pattern in a string
+text = "Hello, my email address is john@example.com"
+pattern = r"\b[\w.-]+@[\w.-]+\.\w+\b"
+match = re.search(pattern, text)
+if match:
+    print(match.group())  # Output: john@example.com
+
+# Split a string based on a pattern
+text = "Apples, Bananas, Oranges, Grapes"
+pattern = r",\s"
+result = re.split(pattern, text)
+print(result)  # Output: ['Apples', 'Bananas', 'Oranges', 'Grapes']
+
+# Substitute a pattern in a string
+text = "Hello, my name is John"
+pattern = r"John"
+replacement = "Jane"
+new_text = re.sub(pattern, replacement, text)
+print(new_text)  # Output: Hello, my name is Jane
+
+
+In Python, developers can use regular expressions to perform tasks such as pattern matching, string substitution, splitting strings, and validating input. The re module provides functions like search(), match(), findall(), and sub() for working with regular expressions. Regular expressions in Python are versatile and can be applied to a variety of scenarios, from simple text manipulation to complex data parsing.
+
+
+
+In summary, Object-Oriented Programming in Python allows developers to create classes and objects, promoting code reusability and maintainability. Inheritance and polymorphism enable the creation of specialized classes based on existing ones and facilitate flexibility in working with different objects. Regular expressions (RegEx) in Python are powerful tools for pattern matching and text manipulation, offering a wide range of functionalities for searching, finding, and manipulating text based on specific patterns. Python's re module provides functions and methods to work with regular expressions effectively.

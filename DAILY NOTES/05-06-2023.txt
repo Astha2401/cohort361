@@ -1,0 +1,20 @@
+05-06-2023
+
+What are modules in Python?
+
+What are errors and exception in Python?
+
+Using and creating data streams
+
+File Handling in Python
+
+
+In Python, modules are separate files that contain Python code and can be imported into other Python programs. Modules provide a way to organize and reuse code, making it easier to manage large programs. They help in maintaining code modularity and encapsulation. Python has a vast standard library that includes many modules for different purposes, such as math, datetime, and os. Additionally, developers can create their own custom modules to encapsulate specific functionalities and make them available for reuse in multiple projects.
+
+Errors and exceptions are an integral part of Python programming. Errors are issues that prevent the program from executing properly and result in program termination. Exceptions, on the other hand, are events that occur during program execution and disrupt the normal flow of code. Python provides a robust error handling mechanism using try-except blocks. By using try-except, developers can catch and handle specific exceptions, allowing the program to gracefully recover from errors. Python also provides a hierarchy of exception classes that can be used for more granular exception handling.
+
+Data streams refer to a continuous flow of data from a source to a destination. In Python, data streams can be utilized for various purposes, such as reading and writing data to files, processing network data, or handling data from external devices. Python provides built-in modules such as sys, io, and socket that enable working with data streams. These modules offer functions and classes to create, read, write, and manipulate data streams. Developers can also create their own custom data streams by implementing the necessary methods and protocols.
+
+File handling in Python involves working with files, such as reading data from files or writing data to files. Python provides a rich set of tools and functions for file handling operations. To read data from a file, developers can use functions like open(), read(), or readlines(). Writing data to a file can be done using functions like open(), write(), or writelines(). Python also supports additional file handling operations, such as appending data to an existing file, seeking a specific position in a file, or closing files after use to free up system resources. Proper file handling practices, such as exception handling and closing files, are essential to ensure data integrity and efficient resource management.
+
+In summary, Python modules are separate files that contain code and can be imported for code reuse. Errors and exceptions play a crucial role in handling unexpected events and errors in Python programs. Data streams enable continuous flow of data from sources to destinations and can be used for various purposes. File handling in Python involves reading and writing data to files, and Python provides comprehensive tools and functions for performing file handling operations effectively and efficiently.
