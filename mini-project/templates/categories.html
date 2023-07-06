@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  html {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(#141e30, #243b55);
+  }
+
+  .category-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+  }
+
+  .category-box h1 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+  }
+
+  .category-box label {
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .category-box select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    appearance: none; /* Add this line */
+    -webkit-appearance: none; /* Add this line for Safari */
+  }
+
+  /* Add the following CSS to style the dropdown arrow */
+  .category-box select::-ms-expand {
+    display: none;
+  }
+
+  .category-box select option {
+    color: #000; /* Change the text color of the options */
+    background-color: #fff; /* Change the background color of the options */
+  }
+
+  .category-box input[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #03e9f4;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .category-box input[type="submit"]:hover {
+    background-color: #03e8f400;
+  }
+</style>
+
+<div class="category-box">
+  <h1>Select a Category</h1>
+  <form action="{{ url_for('select_category') }}" method="POST">
+    <label for="category">Choose a category:</label>
+    <select id="category" name="category_id">
+      <option value="1">Python</option>
+      <option value="2">DBMS</option>
+      <option value="3">Linux</option>
+      <option value="4">Cloud Computing</option>
+      <option value="5">UI/UX</option>
+    </select><br>
+
+    <input type="submit" value="Start Quiz">
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QuizWa - Result</title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: linear-gradient(#141e30, #243b55);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .result-box {
+            background: rgba(0,0,0,.5);
+            padding: 40px;
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0,0,0,.6);
+            border-radius: 10px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .result-box h1 {
+            margin: 0 0 30px;
+            padding: 0;
+        }
+
+        .result-box p {
+            margin-bottom: 20px;
+        }
+
+        .result-box a {
+            color: #03e9f4;
+            text-decoration: none;
+        }
+
+        .result-box a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        <h1>Quiz Result</h1>
+        <p>Hello, {{ user.username }}!</p>
+        <p>You scored {{ quiz_result.correct_answers }} out of {{ quiz_result.total_questions }} questions.</p>
+        <p>Your percentage score is {{ quiz_result.percentage_score }}%.</p>
+        <br>
+        <a href="/categories">Go back to categories</a>
+    </div>
+</body>
+</html>

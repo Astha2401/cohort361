@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Category</title>
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: linear-gradient(#141e30, #243b55);
+    }
+
+    .category-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      padding: 40px;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,.5);
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0,0,0,.6);
+      border-radius: 10px;
+    }
+
+    .category-box h1 {
+      margin: 0 0 30px;
+      padding: 0;
+      color: #fff;
+      text-align: center;
+    }
+
+    .category-box select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 20px;
+      border: none;
+      border-bottom: 1px solid #fff;
+      outline: none;
+      background: transparent;
+    }
+
+    .category-box input[type="submit"] {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #03e9f4;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .category-box input[type="submit"]:hover {
+      background-color: #03e8f400;
+    }
+  </style>
+</head>
+<body>
+  <div class="category-box">
+    <h1>Select a Category</h1>
+    <form method="POST" action="{{ url_for('quiz') }}">
+      <select name="category_id">
+        {% for category in categories %}
+        <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Start Quiz">
+    </form>
+  </div>
+</body>
+</html>

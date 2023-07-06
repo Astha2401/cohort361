@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    html {
+  height: 100%;
+  color: #fff;
+}
+body {
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  background: linear-gradient(#141e30, #243b55);
+}
+h1{
+  text-align: center;
+  margin-top: 24vh;
+}
+.fields{
+    background: rgba(0,0,0,.5);
+      box-shadow: 0 15px 25px rgba(0,0,0,.6);
+      border-radius: 10px;
+      width: 50vh;
+      margin: 0px auto;
+      height: 40vh;
+      text-align: center;
+}
+
+ .fields a{
+    text-decoration: none;
+    color: #8bf7f2;
+    margin: 100px;
+}
+.fields p{
+    padding: 30px;
+}
+li{
+    /* list-style:none; */
+    margin-top: 20px;
+    text-align: left;
+}
+</style>
+<h1>Welcome to the Quiz App</h1>
+<div class="fields">
+<p>Choose an option below:</p>
+<ol>
+    <li><a href="/login">Login</a><br></li>
+      <li> <a href="/signup">Sign Up</a><br></li> 
+      <li> <a href="/previous_results">Create Technical Quiz</a></li>
+      <!-- <li> <a href="/previous_results">LogOut</a></li> -->
+
+</ol>
+
+</div>
+{% endblock %}

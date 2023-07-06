@@ -1,0 +1,99 @@
+
+ CREATE DATABASE IF NOT EXISTS quizwa;
+ USE quizwa;
+ 
+ CREATE TABLE IF NOT EXISTS user_response (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  question_id INT NOT NULL,
+  selected_option INT NOT NULL,
+  is_correct BOOLEAN,
+  FOREIGN KEY (user_id) REFERENCES users (id),
+  FOREIGN KEY (question_id) REFERENCES questions (id)
+);
+ALTER TABLE questions ADD COLUMN correct_response INT NOT NULL DEFAULT 0;
+
+ -- Create the 'users' table to store user information
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
+ USE quizwa;
+-- Create the 'categories' table to store quiz categories
+CREATE TABLE IF NOT EXISTS categories (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+
+-- Create the 'questions' table to store quiz questions
+CREATE TABLE IF NOT EXISTS questions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  category_id INT NOT NULL,
+  question_text TEXT NOT NULL,
+  option1 VARCHAR(255) NOT NULL,
+  option2 VARCHAR(255) NOT NULL,
+  option3 VARCHAR(255) NOT NULL,
+  option4 VARCHAR(255) NOT NULL,
+  correct_option INT NOT NULL,
+  FOREIGN KEY (category_id) REFERENCES categories (id)
+);
+
+-- Create the 'results' table to store quiz results
+CREATE TABLE IF NOT EXISTS results (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  category_id INT NOT NULL,
+  score INT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users (id),
+  FOREIGN KEY (category_id) REFERENCES categories (id)
+);
+
+-- Insert sample categories
+INSERT INTO categories (name) VALUES
+  ('Python'),
+  ('DBMS'),
+  ('Linux'),
+  ('Cloud Computing'),
+  ('UI/UX');
+
+-- Insert sample questions for the 'Python' category
+INSERT INTO questions (category_id, question_text, option1, option2, option3, option4, correct_option) VALUES
+  (1, 'What is the output of the following code?\n\nprint(2 + 2)', '2', '4', '22', 'None of the above', 2),
+  (1, 'What is the correct way to comment in Python?', '# This is a comment', '// This is a comment', '/* This is a comment */', '// This is a comment //', 1),
+  (1, 'Which of the following is not a Python data type?', 'Integer', 'String', 'List', 'Tuple', 4),
+  (1, 'What is the result of the following expression?\n\n10 > 5 and 5 < 3', 'True', 'False', 'Error', 'None of the above', 2),
+  (1, 'Which of the following is a built-in function in Python?', 'my_function()', 'create_function()', 'define_function()', 'print()', 4);
+
+-- Insert sample questions for the 'DBMS' category
+INSERT INTO questions (category_id, question_text, option1, option2, option3, option4, correct_option) VALUES
+  (2, 'What is a primary key in a database?', 'A unique identifier for a table', 'A foreign key in another table', 'A key used for encryption', 'A key used for sorting data', 1),
+  (2, 'What is the purpose of the SELECT statement in SQL?', 'To insert data into a table', 'To update data in a table', 'To delete data from a table', 'To retrieve data from a table', 4),
+  (2, 'Which command is used to add a new column to an existing table in SQL?', 'ALTER TABLE', 'ADD COLUMN', 'UPDATE TABLE', 'INSERT COLUMN', 2),
+  (2, 'What is the JOIN keyword used for in SQL?', 'To combine rows from multiple tables', 'To sort the data in a table', 'To filter data based on a condition', 'To delete rows from a table', 1),
+  (2, 'What is the purpose of the GROUP BY clause in SQL?', 'To filter data based on a condition', 'To sort the data in a table', 'To aggregate data and perform calculations', 'To join multiple tables', 3);
+
+-- Insert sample questions for the 'Linux' category
+INSERT INTO questions (category_id, question_text, option1, option2, option3, option4, correct_option) VALUES
+  (3, 'What command is used to display the current directory in Linux?', 'ls', 'cd', 'pwd', 'dir', 3),
+  (3, 'Which command is used to create a new directory in Linux?', 'mkdir', 'touch', 'newdir', 'addfolder', 1),
+  (3, 'What command is used to change the permissions of a file in Linux?', 'chmod', 'chown', 'chmodown', 'chperm', 1),
+  (3, 'What command is used to list the contents of a directory in Linux?', 'dir', 'list', 'ls', 'show', 3),
+  (3, 'What command is used to copy a file in Linux?', 'mv', 'rm', 'cp', 'copy', 3);
+
+-- Insert sample questions for the 'Cloud Computing' category
+INSERT INTO questions (category_id, question_text, option1, option2, option3, option4, correct_option) VALUES
+  (4, 'What is the main benefit of using cloud computing?', 'Reduced costs', 'Increased security', 'Faster data processing', 'Improved scalability', 1),
+  (4, 'Which of the following is a popular cloud computing service provider?', 'Amazon Web Services (AWS)', 'Microsoft Office 365', 'Google Docs', 'Adobe Creative Cloud', 1),
+  (4, 'What is Infrastructure as a Service (IaaS) in cloud computing?', 'A cloud-based software platform', 'A cloud-based storage solution', 'A cloud-based virtual machine', 'A cloud-based network infrastructure', 3),
+  (4, 'What is Platform as a Service (PaaS) in cloud computing?', 'A cloud-based software platform', 'A cloud-based storage solution', 'A cloud-based virtual machine', 'A cloud-based network infrastructure', 1),
+  (4, 'What is Software as a Service (SaaS) in cloud computing?', 'A cloud-based software platform', 'A cloud-based storage solution', 'A cloud-based virtual machine', 'A cloud-based network infrastructure', 1);
+
+-- Insert sample questions for the 'UI/UX' category
+INSERT INTO questions (category_id, question_text, option1, option2, option3, option4, correct_option) VALUES
+  (5, 'What is the main goal of user interface (UI) design?', 'To make the website visually appealing', 'To improve search engine optimization', 'To enhance user interaction and experience', 'To optimize website performance', 3),
+  (5, 'Which of the following is not a common UX design principle?', 'Simplicity', 'Consistency', 'Clarity', 'Complexity', 4),
+  (5, 'What is the purpose of wireframing in UI/UX design?', 'To create the final visual design of a website', 'To define the website structure and layout', 'To conduct user testing', 'To optimize website performance', 2),
+  (5, 'What is the difference between UI and UX design?', 'UI design focuses on visual aesthetics, while UX design focuses on user experience', 'UI design focuses on user experience, while UX design focuses on visual aesthetics', 'UI design focuses on website structure, while UX design focuses on website performance', 'There is no difference, UI and UX design are the same', 1),
+  (5, 'What is the purpose of prototyping in UI/UX design?', 'To create the final visual design of a website', 'To define the website structure and layout', 'To conduct user testing', 'To optimize website performance', 3);

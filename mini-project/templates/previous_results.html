@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Previous Results</h1>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Score</th>
+    </tr>
+    {% for result in results %}
+    <tr>
+        <td>{{ result.date }}</td>
+        <td>{{ result.score }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div id="chartContainer"></div>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+window.onload = function () {
+    var dataPoints = [
+        {% for result in results %}
+        { x: new Date("{{ result.date }}"), y: {{ result.score }} },
+        {% endfor %}
+    ];
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        theme: "light2",
+        title: {
+            text: "Quiz Results Analysis"
+        },
+        axisX: {
+            valueFormatString: "MMM YYYY"
+        },
+        axisY: {
+            title: "Score",
+            includeZero: false
+        },
+        data: [{
+            type: "line",
+            dataPoints: dataPoints
+        }]
+    });
+    chart.render();
+}
+</script>
+{% endblock %}
